@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
-import { StyleSheet, TextInput, View, FlatList, Button, TouchableOpacity, SafeAreaView } from 'react-native';
+import { StyleSheet, TextInput, Text, View, FlatList, Button, TouchableOpacity, SafeAreaView } from 'react-native';
 
 const LoginScreen = (props) => {
     const [ username, setusername ] = useState('');
+    const [ password, setPassword ] = useState('');
 
     return (
         <SafeAreaView>
+            <Text>Veuillez saisir votre nom s'il vous plaît</Text>
             <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
                 style={styles.inputText}
                 value={username}
-                onChangeText={(e) => setusername(e.target.value)}
+                onChangeText={setusername}
+            />
+            <Text>Veuillez saisir votre mot de passe s'il vous plaît</Text>
+            <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={styles.inputText}
+                value={password}
+                onChangeText={setPassword}
             />
         </SafeAreaView>
     );

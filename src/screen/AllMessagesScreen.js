@@ -61,9 +61,7 @@ const AllMessagesScreen = (props) => {
                     }}
                     style={styles.clickable}
                 >
-                    <Text>
-                        <AntDesign name="home" style={{ fontSize: 32 }} />
-                    </Text>
+                    <AntDesign name="home" style={{ fontSize: 32 }} />
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => {
@@ -81,7 +79,7 @@ const AllMessagesScreen = (props) => {
                     }}
                     style={styles.clickable}
                 >
-                    <Text>Icone Login</Text>
+                    <AntDesign name="user" style={{ fontSize: 32 }} />
                 </TouchableOpacity>
             </View>
 
@@ -99,6 +97,7 @@ const AllMessagesScreen = (props) => {
                     keyExtractor={(item) => item.id.toString()}
                 />
             ) : null}
+            {homeVisible ? <WelcomeScreen /> : null}
             {loginVisible ? <LoginScreen /> : null}
         </SafeAreaView>
     );
