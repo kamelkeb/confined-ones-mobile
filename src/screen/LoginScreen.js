@@ -6,7 +6,13 @@ const LoginScreen = (props) => {
 
     return (
         <SafeAreaView>
-            <TextInput style={styles.inputText} value={username} onChangeText={(e) => setusername(e.target.value)} />
+            <TextInput
+                autoCapitalize="none"
+                autoCorrect={false}
+                style={styles.inputText}
+                value={username}
+                onChangeText={(e) => setusername(e.target.value)}
+            />
         </SafeAreaView>
     );
 };
