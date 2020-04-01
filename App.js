@@ -40,12 +40,12 @@ export default function App() {
         }
     ];
     return (
-        <View style={styles.container}>
-            <Text style={styles.textStyle}>Salut Ifocop!</Text>
+        <View style={{ ...styles.container, marginTop: 60 }}>
+            <Text style={styles.text}>Salut Ifocop!</Text>
             <FlatList
                 data={data}
                 renderItem={({ item }) => (
-                    <View style={styles.container}>
+                    <View style={{ ...styles.container, borderColor: 'black', borderWidth: 1, margin: 5, padding: 5 }}>
                         <Text>{`Bonjour je m'appelle ${item.name} et j'ai ${item.age} ans.`}</Text>
                     </View>
                 )}
