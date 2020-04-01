@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity, SafeAreaView } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
+import WelcomeScreen from './WelcomeScreen';
+import LoginScreen from './LoginScreen';
 
 const AllMessagesScreen = (props) => {
     const [ listeVisible, setListeVisible ] = useState(false);
+    const [ homeVisible, setHomeVisible ] = useState(false);
+    const [ loginVisible, setLoginVisible ] = useState(false);
+
+    const hideAll = () => {
+        setListeVisible(false);
+        setLoginVisible(false);
+        setHomeVisible(false);
+    };
     const data = [
         {
             id: 1,
@@ -43,18 +54,38 @@ const AllMessagesScreen = (props) => {
     return (
         <SafeAreaView style={{ ...styles.container, marginTop: 60 }}>
             <View style={{ flexDirection: 'row' }}>
-                <TouchableOpacity onPress={() => console.log('home')} style={styles.clickable}>
-                    <Text>Home</Text>
+                <TouchableOpacity
+                    onPress={() => {
+                        hideAll();
+                        setHomeVisible(true);
+                    }}
+                    style={styles.clickable}
+                >
+                    <Text>
+                        <AntDesign name="home" style={{ fontSize: 32 }} />
+                    </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('messages')} style={styles.clickable}>
+                <TouchableOpacity
+                    onPress={() => {
+                        hideAll();
+                        setListeVisible(true);
+                    }}
+                    style={styles.clickable}
+                >
                     <Text>Messages</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log('icone')} style={styles.clickable}>
+                <TouchableOpacity
+                    onPress={() => {
+                        hideAll();
+                        setLoginVisible(true);
+                    }}
+                    style={styles.clickable}
+                >
                     <Text>Icone Login</Text>
                 </TouchableOpacity>
             </View>
-            <Text style={styles.text}>Salut Ifocop!</Text>
-            <Button title="Afficher ou cacher la liste des messages" onPress={() => setListeVisible(!listeVisible)} />
+
+            {/* <Button title="Afficher ou cacher la liste des messages" onPress={() => setListeVisible(!listeVisible)} /> */}
             {listeVisible ? (
                 <FlatList
                     data={data}
@@ -68,6 +99,7 @@ const AllMessagesScreen = (props) => {
                     keyExtractor={(item) => item.id.toString()}
                 />
             ) : null}
+            {loginVisible ? <LoginScreen /> : null}
         </SafeAreaView>
     );
 };
