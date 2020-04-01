@@ -42,6 +42,17 @@ const AllMessagesScreen = (props) => {
     ];
     return (
         <SafeAreaView style={{ ...styles.container, marginTop: 60 }}>
+            <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity onPress={() => console.log('home')} style={styles.clickable}>
+                    <Text>Home</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log('messages')} style={styles.clickable}>
+                    <Text>Messages</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => console.log('icone')} style={styles.clickable}>
+                    <Text>Icone Login</Text>
+                </TouchableOpacity>
+            </View>
             <Text style={styles.text}>Salut Ifocop!</Text>
             <Button title="Afficher ou cacher la liste des messages" onPress={() => setListeVisible(!listeVisible)} />
             {listeVisible ? (
@@ -49,15 +60,7 @@ const AllMessagesScreen = (props) => {
                     data={data}
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => alert('Joli click!')}>
-                            <View
-                                style={{
-                                    ...styles.container,
-                                    borderColor: 'black',
-                                    borderWidth: 1,
-                                    margin: 5,
-                                    padding: 5
-                                }}
-                            >
+                            <View style={{ ...styles.clickable, ...styles.container }}>
                                 <Text>{`Bonjour je m'appelle ${item.name} et j'ai ${item.age} ans.`}</Text>
                             </View>
                         </TouchableOpacity>
@@ -78,6 +81,12 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         fontSize: 32
+    },
+    clickable: {
+        borderColor: 'black',
+        borderWidth: 1,
+        margin: 5,
+        padding: 5
     }
 });
 
