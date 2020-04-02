@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, Text, View, FlatList, Button, TouchableOpacity, 
 
 // pour récupérer des paramètres de la route, on récupère déjà
 // la props route
-const LoginScreen = ({ route }) => {
+const LoginScreen = ({ route, navigation }) => {
     const [ username, setusername ] = useState(route.params.username);
     const [ password, setPassword ] = useState('');
 
