@@ -13,6 +13,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import AllMessagesScreen from './src/screen/AllMessagesScreen';
 import WelcomeScreen from './src/screen/WelcomeScreen';
 import LoginScreen from './src/screen/LoginScreen';
+import ColorScreen from './src/screen/ColorsScreen';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -39,7 +40,14 @@ const App = (props) => {
                     name="Welcome"
                     component={WelcomeScreen}
                     options={{
-                        title: 'Bienvenue!'
+                        title: 'Bienvenue!',
+                        headerRight: () => (
+                            <TouchableOpacity onPress={() => alert('Login')} style={styles.clickable}>
+                                <AntDesign name="user" style={{ fontSize: 32 }} />
+                            </TouchableOpacity>
+                        )
+                        // headerLeft permet la même chose que headerRight mais va remplacer
+                        // la flèche de retour lorsqu'elle est apparente
                     }}
                 />
                 {/* rq: si le titre à passer est un string, l'attribut title suffit*/}
@@ -51,9 +59,20 @@ const App = (props) => {
                     component={LoginScreen}
                     options={{ headerTitle: <AntDesign name="user" style={{ fontSize: 32 }} /> }}
                 />
+                <Screen name="Colors" component={ColorScreen} options={{ title: 'Encore des couleurs!' }} />
             </Navigator>
         </NavigationContainer>
     );
 };
+
+const styles = StyleSheet.create({
+    text: { fontSize: 38 },
+    clickable: {
+        borderColor: 'black',
+        borderWidth: 1,
+        margin: 5,
+        padding: 5
+    }
+});
 
 export default App;

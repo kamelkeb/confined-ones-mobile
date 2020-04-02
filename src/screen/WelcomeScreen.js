@@ -5,13 +5,25 @@ import { AntDesign } from '@expo/vector-icons';
 // Chaque screen (mis sous Navigation container) recevram parmi les props
 // un objet nommé navigation
 const WelcomeScreen = ({ navigation }) => {
+    // Supposons que nous avons récupéré la donnée
+    // du dernier utilisateur connecté sur l'app
+    const username = 'martin';
     return (
         <SafeAreaView>
             <Text style={styles.text}>Bienvenue chère utilisiatrice!</Text>
+
             <TouchableOpacity onPress={() => navigation.navigate('AllMessages')}>
                 <Text style={styles.clickable}>Voir tous les messages</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.clickable}>
+            <TouchableOpacity onPress={() => navigation.navigate('Colors')}>
+                <Text style={styles.clickable}>Aller aux couleurs</Text>
+            </TouchableOpacity>
+            {/* Si l'on veut passer des paramètres lors d'un navigation.navigate, 
+            il suffit de passer en second argument un objet contenant les paramètres voulu */}
+            <TouchableOpacity
+                onPress={() => navigation.navigate('Login', { username: username })}
+                style={styles.clickable}
+            >
                 <AntDesign name="user" style={{ fontSize: 32 }} />
             </TouchableOpacity>
         </SafeAreaView>

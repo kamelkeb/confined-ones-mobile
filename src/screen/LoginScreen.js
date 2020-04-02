@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, Text, View, FlatList, Button, TouchableOpacity, SafeAreaView } from 'react-native';
 
-const LoginScreen = (props) => {
-    const [ username, setusername ] = useState('');
+// pour récupérer des paramètres de la route, on récupère déjà
+// la props route
+const LoginScreen = ({ route }) => {
+    const [ username, setusername ] = useState(route.params.username);
     const [ password, setPassword ] = useState('');
 
     return (
@@ -13,6 +15,7 @@ const LoginScreen = (props) => {
                 autoCorrect={false}
                 style={styles.inputText}
                 value={username}
+                placeholder={username}
                 onChangeText={setusername}
             />
             <Text>Veuillez saisir votre mot de passe s'il vous plaît</Text>

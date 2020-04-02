@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity, SafeAreaView } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import WelcomeScreen from './WelcomeScreen';
-import LoginScreen from './LoginScreen';
 
-const AllMessagesScreen = (props) => {
+const AllMessagesScreen = ({ route }) => {
     const [ listeVisible, setListeVisible ] = useState(false);
 
     const hideAll = () => {
