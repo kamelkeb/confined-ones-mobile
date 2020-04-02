@@ -6,13 +6,9 @@ import LoginScreen from './LoginScreen';
 
 const AllMessagesScreen = (props) => {
     const [ listeVisible, setListeVisible ] = useState(false);
-    const [ homeVisible, setHomeVisible ] = useState(false);
-    const [ loginVisible, setLoginVisible ] = useState(false);
 
     const hideAll = () => {
         setListeVisible(false);
-        setLoginVisible(false);
-        setHomeVisible(false);
     };
     const data = [
         {
@@ -57,29 +53,11 @@ const AllMessagesScreen = (props) => {
                 <TouchableOpacity
                     onPress={() => {
                         hideAll();
-                        setHomeVisible(true);
-                    }}
-                    style={styles.clickable}
-                >
-                    <AntDesign name="home" style={{ fontSize: 32 }} />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {
-                        hideAll();
                         setListeVisible(true);
                     }}
                     style={styles.clickable}
                 >
                     <Text>Messages</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => {
-                        hideAll();
-                        setLoginVisible(true);
-                    }}
-                    style={styles.clickable}
-                >
-                    <AntDesign name="user" style={{ fontSize: 32 }} />
                 </TouchableOpacity>
             </View>
 
@@ -97,8 +75,6 @@ const AllMessagesScreen = (props) => {
                     keyExtractor={(item) => item.id.toString()}
                 />
             ) : null}
-            {homeVisible ? <WelcomeScreen /> : null}
-            {loginVisible ? <LoginScreen /> : null}
         </SafeAreaView>
     );
 };
